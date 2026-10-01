@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PartMitra – Part Kahan, Kitne Ka</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f7f6;--card:#fff;--ink:#12241f;--mut:#5b6e68;--line:#dbe4e1;--pri:#0f766e;--pri2:#e6f4f1;--acc:#f5c84b;--ok:#15803d;--warn:#b45309;--bad:#b91c1c;--hd:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a17;--card:#152722;--ink:#e8f1ee;--mut:#9bb0a9;--line:#264039;--pri:#2dd4bf;--pri2:#123a34;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--hd:#04211d}}
+:root[data-theme="dark"]{--bg:#0d1a17;--card:#152722;--ink:#e8f1ee;--mut:#9bb0a9;--line:#264039;--pri:#2dd4bf;--pri2:#123a34;--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--hd:#04211d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Hind,system-ui,sans-serif;padding-bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+h1,h2,h3,.logo{font-family:"Baloo 2",system-ui,sans-serif;margin:0;line-height:1.15}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px}
+header{background:var(--pri);color:var(--hd);padding:12px 0 16px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.logo{font-size:26px;font-weight:800}.logo b{color:var(--acc)}
+.rs{background:rgba(255,255,255,.2);color:inherit;border:0;border-radius:18px;padding:6px 8px;max-width:150px;font:inherit;font-size:14px}.rs option{color:#111}
+.tag{margin:6px 0 0;font-size:14px;opacity:.9}
+input,select,button,textarea{font:inherit}
+.in,dialog input,dialog select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.sb{display:flex;gap:8px;margin-top:10px}.sb .in{color:#111;background:#fff;border:0}
+.btn{background:var(--pri);color:#fff;border:0;border-radius:10px;padding:10px 14px;min-height:44px;cursor:pointer;font-weight:600}
+.btn.a{background:var(--acc);color:#231a00}.btn.g{background:var(--card);color:var(--ink);border:1px solid var(--line)}.btn.r{background:var(--bad)}.btn.s{min-height:38px;padding:6px 10px;font-size:14px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px}
+.chip{flex:none;background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:7px 13px;cursor:pointer}
+.fl{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.fl select{flex:1;min-width:110px;padding:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:10px 0}
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.meta{color:var(--mut);font-size:14px}.b{font-weight:600}
+.badge{display:inline-block;font-size:12.5px;border-radius:6px;padding:2px 7px;background:var(--pri2);color:var(--pri);font-weight:600;margin:2px 4px 2px 0}
+.badge.v{background:var(--pri);color:var(--hd)}.badge.w{background:#fef3c7;color:#78350f}.badge.x{background:#fee2e2;color:#7f1d1d}
+.price{font-family:"Baloo 2";font-size:26px;font-weight:800;line-height:1}
+.ok{color:var(--ok)}.lim{color:var(--warn)}.out{color:var(--bad)}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.acts>*{flex:1;min-width:70px;text-align:center;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:10px 6px;min-height:44px;cursor:pointer;font-size:14.5px}
+.acts .p{background:var(--pri);color:var(--hd);border-color:var(--pri)}
+.empty{text-align:center;color:var(--mut);padding:26px 8px}
+label{display:block;margin:10px 0 4px;font-weight:600;font-size:14.5px}
+.tl{display:flex;gap:4px;margin:10px 0;overflow-x:auto}.tl span{flex:none;font-size:12px;padding:4px 8px;border-radius:12px;background:var(--pri2);color:var(--mut)}.tl .on{background:var(--pri);color:var(--hd)}
+.tabs{display:flex;gap:6px;margin:12px 0}.stat{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.stat b{font:800 24px "Baloo 2"}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;border:0;background:none;color:var(--mut);padding:12px 2px;min-height:56px;font-size:13.5px;cursor:pointer}nav button.on{color:var(--pri);font-weight:700}
+.note{background:var(--pri2);border-radius:10px;padding:10px;font-size:13.5px;margin:10px 0}
+
+.slogo{display:none}nav .mb{display:block}nav button.x{display:none}
+.dr{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9}.dr.o{display:block}
+.dr div{position:absolute;bottom:0;left:0;right:0;background:var(--card);border-radius:16px 16px 0 0;padding:10px 12px calc(12px + env(safe-area-inset-bottom,0px))}
+.dr button{display:block;width:100%;text-align:left;border:0;background:none;color:var(--ink);padding:13px 10px;font-size:16px;border-bottom:1px solid var(--line)}.dr button.on{color:var(--pri);font-weight:700}
+@media(min-width:900px){body{padding-left:230px;padding-bottom:30px}
+nav{top:0;right:auto;bottom:0;width:230px;flex-direction:column;border-top:0;border-right:1px solid var(--line);padding:10px 8px;overflow:auto}
+nav button,nav button.x{display:block;flex:none;text-align:left;padding:11px 12px;border-radius:10px;font-size:15px;min-height:0}nav button.on{background:var(--pri2)}nav .mb{display:none}
+.slogo{display:block;padding:8px 12px 14px;font:800 24px "Baloo 2",sans-serif}.slogo b{color:var(--pri)}.slogo small{display:block;font:500 13px Hind;color:var(--mut)}
+.top .logo{display:none}.top{justify-content:flex-end}.wrap{max-width:960px;padding:0 24px}.stat{grid-template-columns:repeat(3,1fr)}.dr{display:none!important}}
+</style></head><body>
+<header><div class="wrap"><div class="top"><div class="logo">Part<b>Mitra</b></div>
+<select class="rs" id="role" aria-label="Demo login"><option value="customer">Demo: Customer</option><option value="shop">Demo: Shop Owner</option><option value="business">Demo: Business Buyer</option><option value="admin">Demo: Admin</option></select></div>
+<p class="tag">Part Kahan, Kitne Ka — Ek Jagah Pata Karo.<br>Customers · Technicians · Shops · Wholesalers · Businesses</p></div></header>
+<main class="wrap" id="app"></main><nav id="nav"></nav><div class="dr" id="dr"></div>
+<script>
+const $=q=>document.querySelector(q),R=n=>"₹"+Number(n).toLocaleString("en-IN");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const H=3600000,ST=["Order Placed","Shop Confirmed","Preparing","Ready / Shipped","Delivered","Completed"],CONDS=["New","Used","Refurbished"];let FEE=.05;
+function seed(){const n=Date.now(),T={4:[{min:10,price:1500}],5:[{min:10,price:1550}],12:[{min:50,price:95}],13:[{min:50,price:90}],14:[{min:20,price:380}]},C=(id,cat,name)=>({id,cat,name,on:1});
+return{cat:[C(1,"Display","Samsung A15 Display"),C(2,"Display","Redmi Note 12 Display"),C(3,"Display","iPhone 13 Display"),C(4,"Battery","Samsung A15 Battery"),C(5,"Battery","Redmi Note 12 Battery"),C(6,"Charging Port","Redmi Note 12 Charging Port"),C(7,"Charging Port","Samsung A15 Charging Port"),C(8,"Mic","Vivo Y21 Mic"),C(9,"Mobile Phone","Redmi Note 12 Mobile Phone"),C(10,"USB Cable","Type-C USB Cable"),C(11,"Charger","33W Fast Charger"),C(12,"Tools","Digital Multimeter"),C(13,"Tools","Soldering Iron 60W"),C(14,"Power IC","Samsung A15 Power IC")],
+shops:[{id:"s1",name:"Odisha Mobile Care",owner:"Demo Owner 1",phone:"9000000001",addr:"Saheed Nagar Main Road",city:"Bhubaneswar",state:"Odisha",pin:"751007",lat:20.2961,lng:85.8245,st:"verified",rt:4.6,type:"Repair Shop"},
+{id:"s2",name:"Sri Sai Mobiles",owner:"Demo Owner 2",phone:"9000000002",addr:"Patia Square",city:"Bhubaneswar",state:"Odisha",pin:"751024",lat:20.3547,lng:85.8186,st:"verified",rt:4.3,type:"Spare-parts Seller"},
+{id:"s3",name:"Delhi Spares Hub",owner:"Demo Owner 3",phone:"9000000003",addr:"Lajpat Rai Market",city:"Delhi",state:"Delhi",pin:"110006",lat:28.6562,lng:77.2339,st:"verified",rt:4.5,type:"Wholesaler / Dealer"},
+{id:"s4",name:"New Star Mobiles",owner:"Demo Owner 4",phone:"9000000004",addr:"Nayapalli",city:"Bhubaneswar",state:"Odisha",pin:"751012",lat:20.2990,lng:85.8100,st:"pending",rt:0,type:"Technician"}],
+list:[[1,1,1,3200,4,"New","6 months",2],[2,1,1,2100,2,"New","3 months",5],[3,1,1,1600,0,"Refurbished","1 month",30],[4,3,1,2250,7,"New","3 months",8],
+[5,1,2,1750,6,"New","3 months",3],[6,2,2,1200,3,"Used","15 days",60],[7,3,2,1800,5,"New","3 months",9],
+[8,1,4,650,9,"New","6 months",4],[9,2,4,480,3,"Refurbished","1 month",20],[10,3,5,600,8,"New","6 months",6],
+[11,1,6,250,12,"New","1 month",10],[12,2,10,150,25,"New","3 months",12],[13,3,10,140,40,"New","3 months",7],[14,1,11,450,10,"New","6 months",15],[15,2,12,900,5,"New","1 year",22],[16,1,9,14500,2,"New","1 year brand",11]]
+.map(a=>({id:"l"+a[0],shop:"s"+a[1],prod:a[2],price:a[3],stock:a[4],cond:a[5],war:a[6],pub:1,ts:n-a[7]*H,prev:null,tiers:T[a[0]]||[]})),orders:[],seq:1}}
+let D,role="customer",view="home",Q="",LOC="",ME=null,SORT="low",INS=0,COND="",cart=[],SHOP="s1",msg="";
+try{D=JSON.parse(localStorage.getItem("pm3"))}catch(e){}if(!D||!D.cat)D=seed();
+D.prof=D.prof||{name:"",phone:"",email:"",addr:""};if(D.fee!=null)FEE=D.fee;
+D.biz=D.biz||{name:"",gst:"",type:"Small business"};D.quotes=D.quotes||[];
+const STY=["Repair Shop","Technician","Service Center","Spare-parts Seller","Wholesaler / Dealer","Supplier"],BTY=["Small business","Medium business","Large company","Corporate","Institution / Organization","Repair shop / Technician"];
+const unit=(l,q)=>{if(role=="business"&&l.tiers)for(const t of [...l.tiers].sort((a,b)=>b.min-a.min))if(q>=t.min)return t.price;return l.price};
+let TYPE="";
+const save=()=>{try{localStorage.setItem("pm3",JSON.stringify(D))}catch(e){}};
+const cat=i=>D.cat.find(c=>c.id==i),shop=i=>D.shops.find(s=>s.id==i),lst=i=>D.list.find(l=>l.id==i);
+function km(s){if(!ME||s.lat==null)return null;const t=x=>x*Math.PI/180,a=Math.sin(t(s.lat-ME.lat)/2)**2+Math.cos(t(ME.lat))*Math.cos(t(s.lat))*Math.sin(t(s.lng-ME.lng)/2)**2;return 12742*Math.asin(Math.sqrt(a))}
+const ago=ts=>{const h=(Date.now()-ts)/H;return h<1?"just now":h<24?Math.floor(h)+" hr ago":Math.floor(h/24)+" days ago"};
+const stk=n=>n<1?'<span class="out">🔴 Out of stock</span>':n<=2?`<span class="lim">🟡 Only ${n} left</span>`:'<span class="ok">🟢 In stock</span>';
+const opt=(a,v)=>a.map(x=>`<option ${x==v?"selected":""}>${x}</option>`).join("");
+function results(){const w=Q.toLowerCase().replace("screen","display").split(/\s+/).filter(Boolean);
+let L=D.list.filter(l=>l.pub&&shop(l.shop).st=="verified").map(l=>({l,p:cat(l.prod),s:shop(l.shop)})).filter(x=>x.p.on&&w.every(k=>(x.p.name+" "+x.p.cat).toLowerCase().includes(k)));
+if(LOC)L=L.filter(x=>(x.s.city+" "+x.s.pin+" "+x.s.state).toLowerCase().includes(LOC.toLowerCase()));
+if(TYPE)L=L.filter(x=>x.s.type==TYPE);if(INS)L=L.filter(x=>x.l.stock>0);if(COND)L=L.filter(x=>x.l.cond==COND);
+const d=x=>km(x.s)??9e9;L.sort(SORT=="near"?(a,b)=>d(a)-d(b):SORT=="high"?(a,b)=>b.l.price-a.l.price:(a,b)=>a.l.price-b.l.price);return L}
+const V={
+home(){const cs=[...new Set(D.cat.filter(c=>c.on).map(c=>c.cat))];const L=results();
+return`<div class="sb"><input class="in" id="q" value="${esc(Q)}" placeholder="Search mobile model or part name..." enterkeyhint="search"><button class="btn a" onclick="Q=$('#q').value;render()">Search</button></div>
+<div class="sb"><input class="in" id="loc" value="${esc(LOC)}" placeholder="City ya PIN code (khali = sab)" style="background:var(--card);border:1px solid var(--line);color:var(--ink)"><button class="btn g" onclick="LOC=$('#loc').value;render()">Set</button><button class="btn g" onclick="gps()">📍 GPS</button></div>
+<div class="chips">${cs.map(c=>`<button class="chip" onclick="Q='${c}';render()">${c}</button>`).join("")}</div>
+<div class="fl"><select id="sort" onchange="SORT=this.value;render()"><option value="low" ${SORT=="low"?"selected":""}>Lowest price</option><option value="high" ${SORT=="high"?"selected":""}>Highest price</option><option value="near" ${SORT=="near"?"selected":""}>Nearest (GPS)</option></select>
+<select onchange="COND=this.value;render()"><option value="">Any condition</option>${opt(CONDS,COND)}</select><select onchange="TYPE=this.value;render()"><option value="">All seller types</option>${opt(STY,TYPE)}</select><select onchange="INS=+this.value;render()"><option value="0">All stock</option><option value="1" ${INS?"selected":""}>In stock only</option></select></div>
+${msg?`<div class="note">${msg}</div>`:""}<p class="meta">${L.length} listings${Q?` for "${esc(Q)}"`:""}${LOC?` in ${esc(LOC)}`:""}</p>
+${L.map(x=>{const k=km(x.s),u=shop(x.l.shop),old=(Date.now()-x.l.ts)/H>72;return`<div class="card"><div class="row"><div><div class="b">${esc(x.p.name)}</div>
+<div class="b" style="color:var(--pri)">${esc(x.s.name)}</div><div class="meta">📍 ${esc(x.s.addr)}, ${esc(x.s.city)} ${esc(x.s.pin)}${k!=null?" · "+(k<1?Math.round(k*1000)+" m":k.toFixed(1)+" km"):""} · ★ ${x.s.rt}</div></div>
+<div class="price">${R(x.l.price)}</div></div><div style="margin-top:6px"><span class="badge v">Verified shop</span><span class="badge">${x.s.type||"Shop"}</span><span class="badge">${x.l.cond}</span>${x.l.tiers&&x.l.tiers.length?`<span class="badge w">${role=="business"?"Bulk: "+x.l.tiers.map(t=>t.min+"+ pcs "+R(t.price)).join(", "):"Bulk price for business accounts"}</span>`:""}<span class="badge">${esc(x.l.war)} warranty</span></div>
+<div class="meta">${stk(x.l.stock)} · Updated ${ago(x.l.ts)}</div>${old?'<div class="badge w">Price may have changed — confirm with shop</div>':""}
+<div class="acts"><button class="p" onclick="add('${x.l.id}')" ${x.l.stock<1?"disabled":""}>Add to cart</button><a href="tel:${x.s.phone}">Call</a><a href="https://wa.me/91${x.s.phone}?text=${encodeURIComponent(x.p.name+" available?")}" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x.s.name+", "+x.s.addr+", "+x.s.city)}" target="_blank" rel="noopener">Directions</a>${role=="business"?`<button onclick="quote('${x.l.id}')">Bulk quote</button>`:""}</div></div>`}).join("")||'<div class="empty">Kuch nahi mila. Search ya city badal kar dekho.</div>'}`},
+cart(){const by={};cart.forEach(c=>{const l=lst(c.lid);(by[l.shop]=by[l.shop]||[]).push(c)});const ks=Object.keys(by);
+if(!ks.length)return'<div class="empty">Cart khali hai.</div>';let tot=0;
+return`${ks.length>1?`<div class="note">Is order mein ${ks.length} alag shops hain. Har shop ka alag order banega.</div>`:""}`+ks.map(s=>`<div class="card"><div class="b">${esc(shop(s).name)}</div>${by[s].map(c=>{const l=lst(c.lid);tot+=unit(l,c.q)*c.q;return`<div class="row" style="margin-top:8px"><div>${esc(cat(l.prod).name)}<div class="meta">${l.cond} · ${R(unit(l,c.q))} each${unit(l,c.q)<l.price?" (bulk price)":""}</div></div><input class="in" type="number" min="0" value="${c.q}" style="width:84px" onchange="setq('${c.lid}',this.value)"></div>`}).join("")}</div>`).join("")+
+`<div class="card"><div class="row"><span class="b">Total</span><span class="price">${R(tot)}</span></div><label>Name</label><input class="in" id="cn" value="${esc(D.prof.name)}"><label>Mobile</label><input class="in" id="cp" inputmode="numeric" maxlength="10" value="${esc(D.prof.phone)}"><label>Address</label><input class="in" id="ca" value="${esc(D.prof.addr)}">${role=="business"?`<div class="note">Business order: ${D.biz.name?esc(D.biz.name)+(D.biz.gst?" · GSTIN "+esc(D.biz.gst):""):"pehle Account tab mein company details bharo"}</div>`:""}<label>Payment</label><select class="in" id="cm"><option>Cash on delivery / pay at shop</option><option>UPI / Card (online)</option></select>
+<div class="note">Online payment gateway abhi connected nahi hai, isliye payment "Pending" rahega. Payment ko sirf gateway (backend) successful mark karega.</div><button class="btn" style="width:100%" onclick="place()">Place order</button></div>`},
+orders(){const L=D.orders.filter(o=>o.cust=="c1").reverse();return L.map(o=>oc(o,0)).join("")||'<div class="empty">Abhi koi order nahi.</div>'},
+acct(){const Q=D.quotes.slice().reverse();return`<div class="card"><h3>Business account</h3><label>Company / organization name</label><input class="in" id="bn" value="${esc(D.biz.name)}"><label>GSTIN (optional)</label><input class="in" id="bg" value="${esc(D.biz.gst)}" maxlength="15" placeholder="22AAAAA0000A1Z5"><label>Business type</label><select class="in" id="bt">${opt(BTY,D.biz.type)}</select><button class="btn" style="width:100%;margin-top:12px" onclick="saveBiz()">Save</button><div class="note">Ye details har B2B order ke saath save hoti hain, taaki baad mein GST invoice ban sake.</div></div>${msg?`<div class="note">${msg}</div>`:""}<h3>Meri bulk quote requests</h3>${Q.map(q=>`<div class="card"><div class="b">${esc(cat(lst(q.lid).prod).name)} × ${q.q}</div><div class="meta">${esc(shop(lst(q.lid).shop).name)} · <span class="badge">${q.st}</span></div></div>`).join("")||'<div class="meta">Koi nahi.</div>'}`},
+sl(){const s=shop(SHOP);if(!s)return V.sp();const L=D.list.filter(l=>l.shop==SHOP);
+return`${shpick()}
+${s.st!="verified"?'<div class="note">Shop abhi verified nahi hai, isliye listings customers ko nahi dikhengi.</div>':""}
+${L.map(l=>`<div class="card"><div class="row"><div class="b">${esc(cat(l.prod).name)}</div><span class="badge ${l.pub?"v":"x"}">${l.pub?"Live":"Hidden"}</span></div><div class="meta">${l.cond} · ${esc(l.war)} · ${ago(l.ts)}${l.tiers&&l.tiers.length?" · Bulk "+l.tiers.map(t=>t.min+"+ @ "+R(t.price)).join(", "):""}</div>
+<div class="fl"><input class="in" id="p${l.id}" value="${l.price}" inputmode="numeric" style="flex:1"><input class="in" id="s${l.id}" value="${l.stock}" inputmode="numeric" style="flex:1"></div><div class="acts"><button class="p" onclick="upL('${l.id}')">Save price/stock</button><button onclick="tg('${l.id}')">${l.pub?"Unpublish":"Publish"}</button><button onclick="rmL('${l.id}')">Remove</button></div></div>`).join("")}`},
+so(){const L=D.orders.filter(o=>o.shop==SHOP).reverse(),QL=D.quotes.filter(q=>lst(q.lid)&&lst(q.lid).shop==SHOP).reverse();return shpick()+QL.map(q=>`<div class="card"><div class="b">Bulk quote: ${esc(cat(lst(q.lid).prod).name)} × ${q.q}</div><div class="meta">${esc(q.biz.name)} · ${esc(q.biz.type)}${q.biz.gst?" · GSTIN "+esc(q.biz.gst):""}</div><div class="acts">${q.st=="New"?`<button class="p" onclick="rq('${q.id}')">Mark replied</button>`:'<span class="badge">Replied</span>'}</div></div>`).join("")+(L.map(o=>oc(o,1)).join("")||'<div class="empty">Abhi koi order nahi.</div>')},
+ss(){const L=D.orders.filter(o=>o.shop==SHOP&&o.st!="Cancelled");return shpick()+`<div class="note">Settlement tabhi "Processing" hoga jab customer ka payment gateway se Successful ho. Abhi sab Pending hai.</div>`+(L.map(o=>`<div class="card"><div class="b">${o.id}</div><div class="meta">Order ${R(o.total)} · Platform fee ${R(o.fee)} (${FEE*100}%)</div><div class="b">Net ${R(o.total-o.fee)}</div><span class="badge">Settlement: ${o.set}</span></div>`).join("")||'<div class="empty">Koi settlement nahi.</div>')},
+sp(){const s0=shop(SHOP);return(s0?`<div class="card"><h3>Shop profile</h3><div class="b">${esc(s0.name)}</div><div class="meta">${esc(s0.type||"Shop")} · ${esc(s0.owner)} · ${esc(s0.phone)}<br>${esc(s0.addr)}, ${esc(s0.city)}, ${esc(s0.state)} ${esc(s0.pin)}<br>Status: ${s0.st}</div></div>`:"")+`<div class="card"><h3>Naya shop register karo</h3>${["Shop name","Owner name","Mobile","Email","Address","City","State","PIN code"].map((f,i)=>`<label>${f}</label><input class="in" id="r${i}">`).join("")}<label>Seller type</label><select class="in" id="rt">${opt(STY)}</select><button class="btn g" style="margin-top:10px" onclick="gps(1)" id="rg">📍 Shop location (GPS)</button><button class="btn" style="width:100%;margin-top:10px" onclick="reg()">Register</button><div class="note">Admin verify karne ke baad shop customers ko dikhegi.</div></div>`},
+as(){return["pending","verified","rejected","blocked"].map(t=>`<h3 style="margin-top:14px;text-transform:capitalize">${t}</h3>`+(D.shops.filter(s=>s.st==t).map(s=>`<div class="card"><div class="b">${esc(s.name)}</div><div class="meta">${esc(s.type||"Shop")} · ${esc(s.owner)} · ${esc(s.phone)}<br>${esc(s.addr)}, ${esc(s.city)}, ${esc(s.state)} ${esc(s.pin)}</div><div class="acts">${t!="verified"&&t!="blocked"?`<button class="p" onclick="ss_('${s.id}','verified')">Approve</button>`:""}${t=="pending"?`<button onclick="ss_('${s.id}','rejected')">Reject</button>`:""}${t=="verified"?`<button onclick="ss_('${s.id}','blocked')">Block</button>`:""}${t=="blocked"?`<button class="p" onclick="ss_('${s.id}','verified')">Unblock</button>`:""}</div></div>`).join("")||'<div class="meta">Koi nahi.</div>')).join("")},
+ac(){return`<div class="card"><h3>Master product add karo</h3><label>Category</label><input class="in" id="nc" list="cl" placeholder="Display, Battery..."><datalist id="cl">${[...new Set(D.cat.map(c=>c.cat))].map(c=>`<option value="${c}">`).join("")}</datalist><label>Product name</label><input class="in" id="nn" placeholder="Vivo Y21 Display"><button class="btn" style="width:100%;margin-top:10px" onclick="addC()">Add</button></div>`+D.cat.map(c=>`<div class="card row"><div><div class="b">${esc(c.name)}</div><div class="meta">${esc(c.cat)}</div></div><button class="btn g s" onclick="tc(${c.id})">${c.on?"Deactivate":"Activate"}</button></div>`).join("")},
+ao(){return D.orders.slice().reverse().map(o=>oc(o,2)).join("")||'<div class="empty">Koi order nahi.</div>'},
+ar(){const g=t=>D.orders.filter(o=>o.st!="Cancelled").reduce((a,o)=>a+o[t],0),v=D.shops.filter(s=>s.st=="verified").length;
+return`<div class="stat"><div><b>${D.shops.length}</b><br>Shops (${v} verified)</div><div><b>${D.cat.length}</b><br>Master products</div><div><b>${D.list.length}</b><br>Listings</div><div><b>${D.orders.length}</b><br>Orders</div><div><b>${D.orders.filter(o=>o.buyer=="B2B").length} / ${D.orders.filter(o=>o.buyer!="B2B").length}</b><br>B2B / B2C orders</div><div><b>${R(g("total"))}</b><br>Total sales</div><div><b>${R(g("fee"))}</b><br>Platform fees</div></div><div class="note">Payments: ${D.orders.filter(o=>o.pay.s=="Pending").length} pending, 0 successful (gateway connected nahi).</div><button class="btn r" onclick="if(confirm('Saara demo data reset karein?')){localStorage.removeItem('pm3');location.reload()}">Reset demo data</button>`}};
+function shpick(){return`<select class="in" style="margin-top:10px" onchange="SHOP=this.value;render()">${D.shops.map(s=>`<option value="${s.id}" ${s.id==SHOP?"selected":""}>${esc(s.name)} (${s.st})</option>`).join("")}</select>`}
+function oc(o,m){const ci=ST.indexOf(o.st),nx=ST[ci+1];
+return`<div class="card"><div class="row"><div><div class="b">${o.id} · ${esc(shop(o.shop).name)}</div><div class="meta">${esc(o.cname)} · ${esc(o.cphone)}<br>${esc(o.addr)}</div></div><div class="price" style="font-size:22px">${R(o.total)}</div></div>
+${o.items.map(i=>`<div class="meta">${i.q} × ${esc(i.name)} (${i.cond}) ${R(i.price)}</div>`).join("")}
+${o.buyer=="B2B"?`<div><span class="badge v">B2B · ${esc(o.biz.name)}${o.biz.gst?" · GSTIN "+esc(o.biz.gst):""}</span></div>`:""}<div class="meta">Payment: ${esc(o.pay.m)} · <span class="badge w">${o.pay.s}</span></div>
+${o.st=="Cancelled"?'<span class="badge x">Cancelled</span>':`<div class="tl">${ST.map((s,i)=>`<span class="${i<=ci?"on":""}">${s}</span>`).join("")}</div>`}
+<div class="acts">${m==1&&nx&&o.st!="Cancelled"?`<button class="p" onclick="adv('${o.id}')">Mark: ${nx}</button>`:""}${m==0&&ci<2&&o.st!="Cancelled"?`<button onclick="canc('${o.id}')">Cancel order</button>`:""}</div></div>`}
+const NAV={customer:[["home","🔍 Search"],["cart","🛒 Cart"],["orders","📦 Orders"],["pay","💳 Payments"],["track","🚚 Order Tracking"],["prof","👤 Profile"]],
+shop:[["sm","🏪 My Shop"],["sl","📦 Products"],["sa","➕ Add Product"],["spr","₹ Price"],["sst","📊 Stock"],["so","🧾 Orders"],["se","💰 Earnings"],["ss","🏦 Settlements"],["sp","👤 Profile"]],
+admin:[["as","🏪 Shops"],["aso","🧑‍💼 Shop Owners"],["acu","👥 Customers"],["ac","📦 Products"],["ao","🧾 Orders"],["ap","💳 Payments"],["ast","🏦 Settlements"],["ar","📈 Reports"],["aset","⚙️ Settings"]]};
+NAV.business=NAV.customer.concat([["acct","🏢 Business Account"]]);
+function go(v){view=v;msg="";$("#dr").classList.remove("o");render();scrollTo(0,0)}
+function render(){const N=NAV[role],cur=N.find(n=>n[0]==view)||N[0];
+$("#app").innerHTML=`<h2 style="margin:14px 0 2px">${cur[1].replace(/^\S+\s/,"")}</h2>`+V[view]();
+const b=(n,c)=>`<button class="${c} ${n[0]==view?"on":""}" onclick="go('${n[0]}')">${n[1]}${n[0]=="cart"&&cart.length?" ("+cart.length+")":""}</button>`;
+$("#nav").innerHTML='<div class="slogo">Part<b>Mitra</b><small>'+{customer:"Customer",business:"Business",shop:"Shop Owner",admin:"Admin"}[role]+'</small></div>'+N.map((n,k)=>b(n,k>2?"x":"")).join("")+'<button class="mb" onclick="$(\'#dr\').classList.add(\'o\')">☰ More</button>';
+$("#dr").innerHTML="<div>"+N.map(n=>b(n,"")).join("")+"</div>";save()}
+$("#dr").onclick=e=>{if(e.target.id=="dr")e.target.classList.remove("o")};
+$("#role").onchange=e=>{role=e.target.value;view={customer:"home",business:"home",shop:"sm",admin:"as"}[role];render()};
+function gps(r){if(!navigator.geolocation)return alert("GPS available nahi hai.");navigator.geolocation.getCurrentPosition(p=>{ME={lat:p.coords.latitude,lng:p.coords.longitude};if(r){$("#rg").textContent="📍 Location mil gayi ✓"}else{SORT="near";render()}},()=>alert("Location permission nahi mili. City ya PIN likho."))}
+function add(id){const c=cart.find(x=>x.lid==id);if(c)c.q=Math.min(c.q+1,lst(id).stock);else cart.push({lid:id,q:1});msg="Cart mein add ho gaya ✓ ("+cart.length+" item)";render()}
+function setq(id,v){const c=cart.find(x=>x.lid==id);v=Math.floor(+v);if(!(v>=1))cart=cart.filter(x=>x!=c);else c.q=Math.min(v,lst(id).stock);render()}
+function quote(id){const q=Math.floor(+prompt("Kitni quantity chahiye?"));if(!(q>0))return;if(!D.biz.name)return alert("Pehle Account tab mein company details bharo.");D.quotes.push({id:"Q"+Date.now(),lid:id,q,biz:{...D.biz},st:"New",ts:Date.now()});msg="Bulk quote request shop ko bhej di ✓";render()}
+function rq(id){D.quotes.find(x=>x.id==id).st="Replied";render()}
+function saveBiz(){const g=$("#bg").value.trim().toUpperCase();if(!$("#bn").value.trim())return alert("Company name bharo.");if(g&&!/^\d{2}[A-Z]{5}\d{4}[A-Z][A-Z\d]Z[A-Z\d]$/.test(g))return alert("GSTIN 15 character ka sahi format hona chahiye.");D.biz={name:$("#bn").value.trim(),gst:g,type:$("#bt").value};msg="Saved ✓";render()}
+function place(){const n=$("#cn").value.trim(),p=$("#cp").value.trim(),a=$("#ca").value.trim();if(!n||!/^\d{10}$/.test(p)||!a)return alert("Name, 10-digit mobile aur address bharo.");if(role=="business"&&!D.biz.name)return alert("Pehle Account tab mein company details bharo.");
+const by={};cart.forEach(c=>{const l=lst(c.lid);if(c.q>l.stock)return;(by[l.shop]=by[l.shop]||[]).push({l,q:c.q})});
+for(const s in by){const items=by[s].map(x=>{x.l.stock-=x.q;return{lid:x.l.id,name:cat(x.l.prod).name,cond:x.l.cond,price:unit(x.l,x.q),q:x.q}}),total=items.reduce((t,i)=>t+i.price*i.q,0);
+D.orders.push({id:"PM"+String(1000+D.seq++),cust:"c1",cname:n,cphone:p,addr:a,shop:s,items,total,fee:Math.round(total*FEE),st:"Order Placed",pay:{m:$("#cm").value,s:"Pending",txn:null,paidAt:null},set:"Pending",ts:Date.now(),buyer:role=="business"?"B2B":"B2C",biz:role=="business"?{...D.biz}:null})}
+cart=[];view="orders";render()}
+function adv(id){const o=D.orders.find(x=>x.id==id);o.st=ST[ST.indexOf(o.st)+1];render()}
+function canc(id){const o=D.orders.find(x=>x.id==id);if(!confirm("Order cancel karein?"))return;o.st="Cancelled";o.items.forEach(i=>{const l=lst(i.lid);if(l)l.stock+=i.q});render()}
+function addL(){const pr=+$("#apr").value,st=+$("#ast").value,pid=+$("#ap").value,c=$("#ac").value;if(!(pr>0)||!(st>=0)||$("#ast").value==="")return alert("Price aur stock sahi bharo.");
+const bm=+$("#abm").value,bp=+$("#abp").value,tiers=[];if(bm||bp){if(!(bm>1&&bp>0&&bp<pr))return alert("Bulk: min qty 2+ aur bulk price retail price se kam hona chahiye.");tiers.push({min:bm,price:bp})}
+if(D.list.some(l=>l.shop==SHOP&&l.prod==pid&&l.cond==c))return alert("Ye product is condition mein pehle se listed hai. Neeche se price/stock edit karo.");
+D.list.push({id:"l"+Date.now(),shop:SHOP,prod:pid,price:pr,stock:st,cond:c,war:$("#aw").value||"No warranty",pub:1,ts:Date.now(),prev:null,tiers:tiers});render()}
+function upL(id){const l=lst(id),pe=$("#p"+id),se=$("#s"+id),p=pe?+pe.value:l.price,s=se?+se.value:l.stock;if(!(p>0)||!(s>=0))return alert("Sahi number daalo.");if(p!=l.price)l.prev=l.price;l.price=p;l.stock=s;l.ts=Date.now();render()}
+function tg(id){const l=lst(id);l.pub=l.pub?0:1;render()}
+function rmL(id){if(confirm("Listing hatayein?")){D.list=D.list.filter(l=>l.id!=id);render()}}
+function reg(){const v=[0,1,2,3,4,5,6,7].map(i=>$("#r"+i).value.trim());if(v[0]==""||v[1]==""||!/^\d{10}$/.test(v[2])||v[5]==""||!/^\d{6}$/.test(v[7]))return alert("Shop name, owner, 10-digit mobile, city aur 6-digit PIN zaroori hain.");
+const id="s"+Date.now();D.shops.push({id,name:v[0],owner:v[1],phone:v[2],email:v[3],addr:v[4],city:v[5],state:v[6],pin:v[7],lat:ME?ME.lat:null,lng:ME?ME.lng:null,st:"pending",rt:0,type:$("#rt").value});SHOP=id;view="sl";render()}
+function ss_(id,st){shop(id).st=st;render()}
+function addC(){const c=$("#nc").value.trim(),n=$("#nn").value.trim();if(!c||!n)return alert("Category aur naam bharo.");D.cat.push({id:Date.now(),cat:c,name:n,on:1});render()}
+function tc(id){const c=cat(id);c.on=c.on?0:1;render()}
+const myO=()=>D.orders.filter(o=>o.cust=="c1"),sO=()=>D.orders.filter(o=>o.shop==SHOP&&o.st!="Cancelled");
+const rowsL=m=>{const L=D.list.filter(l=>l.shop==SHOP);return shpick()+(L.map(l=>`<div class="card"><div class="row"><div class="b">${esc(cat(l.prod).name)}</div><span class="badge">${l.cond}</span></div><div class="meta">${ago(l.ts)}</div><div class="fl">${m!="s"?`<input class="in" id="p${l.id}" value="${l.price}" inputmode="numeric" style="flex:1">`:""}${m!="p"?`<input class="in" id="s${l.id}" value="${l.stock}" inputmode="numeric" style="flex:1">`:""}<button class="btn" onclick="upL('${l.id}')">Save</button></div></div>`).join("")||'<div class="empty">Koi product nahi.</div>')};
+const pr=(o)=>`<div style="text-align:right"><div class="b">${R(o.total)}</div><span class="badge w">${o.pay.s}</span></div>`;
+Object.assign(V,{
+sm(){const s=shop(SHOP);if(!s)return V.sp();const L=D.list.filter(l=>l.shop==SHOP),o=D.orders.filter(x=>x.shop==SHOP);return shpick()+`<div class="stat"><div><b>${L.filter(l=>l.pub).length}</b><br>Live products</div><div><b>${L.filter(l=>l.stock<3).length}</b><br>Low / out of stock</div><div><b>${o.filter(x=>x.st=="Order Placed").length}</b><br>New orders</div><div><b>${s.st}</b><br>Verification</div></div>`+(s.st!="verified"?'<div class="note">Admin verify karega tab shop customers ko dikhegi.</div>':"")},
+sa(){if(!shop(SHOP))return V.sp();return shpick()+`<div class="card"><h3>Product add karo (master catalog se)</h3><label>Product</label><select class="in" id="ap">${D.cat.filter(c=>c.on).map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select>
+<label>Selling price (₹)</label><input class="in" id="apr" inputmode="numeric"><label>Stock</label><input class="in" id="ast" inputmode="numeric"><label>Condition</label><select class="in" id="ac">${opt(CONDS)}</select><label>Warranty</label><input class="in" id="aw" placeholder="3 months"><label>Bulk / wholesale price (optional): minimum qty</label><input class="in" id="abm" inputmode="numeric" placeholder="10"><label>Bulk price per piece (₹)</label><input class="in" id="abp" inputmode="numeric"><button class="btn" style="width:100%;margin-top:12px" onclick="addL()">Publish</button></div>`},
+spr(){return rowsL("p")},sst(){return rowsL("s")},
+se(){const o=sO(),g=o.reduce((a,x)=>a+x.total,0),f=o.reduce((a,x)=>a+x.fee,0);return shpick()+`<div class="stat"><div><b>${R(g)}</b><br>Gross sales</div><div><b>${R(f)}</b><br>Platform fee</div><div><b>${R(g-f)}</b><br>Net earnings</div><div><b>${o.length}</b><br>Orders</div></div>`},
+prof(){const p=D.prof;return`<div class="card"><label>Naam</label><input class="in" id="pn" value="${esc(p.name)}"><label>Mobile</label><input class="in" id="pp" value="${esc(p.phone)}" inputmode="numeric" maxlength="10"><label>Email</label><input class="in" id="pe" value="${esc(p.email)}"><label>Address</label><input class="in" id="pa" value="${esc(p.addr)}"><button class="btn" style="width:100%;margin-top:12px" onclick="saveP()">Save</button></div>`+(msg?`<div class="note">${msg}</div>`:"")},
+pay(){return myO().reverse().map(o=>`<div class="card row"><div><div class="b">${o.id}</div><div class="meta">${esc(o.pay.m)}</div></div>${pr(o)}</div>`).join("")||'<div class="empty">Koi payment nahi.</div>'},
+track(){const L=myO().filter(o=>o.st!="Cancelled"&&o.st!="Completed").reverse();return L.map(o=>oc(o,0)).join("")||'<div class="empty">Koi active order nahi.</div>'},
+aso(){return D.shops.map(s=>`<div class="card"><div class="b">${esc(s.owner)}</div><div class="meta">${esc(s.phone)} · ${esc(s.name)} (${s.st})</div></div>`).join("")},
+acu(){const m={};D.orders.forEach(o=>{const k=o.cphone;m[k]=m[k]||{n:o.cname,p:k,t:o.buyer||"B2C",c:0,s:0};m[k].c++;m[k].s+=o.total});return Object.values(m).map(c=>`<div class="card row"><div><div class="b">${esc(c.n)}</div><div class="meta">${esc(c.p)} · ${c.t}</div></div><div style="text-align:right">${c.c} orders<br><b>${R(c.s)}</b></div></div>`).join("")||'<div class="empty">Abhi koi customer order nahi.</div>'},
+ap(){return D.orders.slice().reverse().map(o=>`<div class="card row"><div><div class="b">${o.id}</div><div class="meta">${esc(o.pay.m)} · Txn: ${o.pay.txn||"—"}</div></div>${pr(o)}</div>`).join("")||'<div class="empty">Koi payment nahi.</div>'},
+ast(){return D.orders.filter(o=>o.st!="Cancelled").reverse().map(o=>`<div class="card row"><div><div class="b">${esc(shop(o.shop).name)}</div><div class="meta">${o.id} · fee ${R(o.fee)}</div></div><div style="text-align:right"><b>${R(o.total-o.fee)}</b><br><span class="badge">${o.set}</span></div></div>`).join("")||'<div class="empty">Koi settlement nahi.</div>'},
+aset(){return`<div class="card"><label>Platform fee (%)</label><input class="in" id="sf" type="number" min="0" max="30" step="0.5" value="${FEE*100}"><button class="btn" style="width:100%;margin-top:12px" onclick="saveS()">Save</button><div class="note">Logo, naam, colors aur categories abhi file ke upar ke hisse mein hain. Live version mein ye Settings se badlenge.</div></div><button class="btn r" onclick="if(confirm('Saara demo data reset karein?')){localStorage.removeItem('pm3');location.reload()}">Reset demo data</button>`}});
+function saveP(){D.prof={name:$("#pn").value.trim(),phone:$("#pp").value.trim(),email:$("#pe").value.trim(),addr:$("#pa").value.trim()};if(!/^\d{10}$/.test(D.prof.phone)&&!D.prof.email)return alert("Mobile ya email dono mein se ek zaroor bharo.");msg="Saved ✓";render()}
+function saveS(){const f=+$("#sf").value;if(!(f>=0&&f<=30))return alert("0 se 30 ke beech daalo.");FEE=f/100;D.fee=FEE;render()}
+
+render();
+</script></body></html>
